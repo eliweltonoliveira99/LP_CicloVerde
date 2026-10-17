@@ -1,0 +1,435 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CicloVerde - Landing Page</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: #f9fbf9;
+            color: #333;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+
+
+        header {
+            background-color: #fff;
+            padding: 20px 10%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+        }
+
+        .logo {
+            font-size: 28px;
+            font-weight: bold;
+            color: #228B22;
+        }
+
+        .btn-nav {
+            background-color: #228B22;
+            color: #fff;
+            padding: 10px 25px;
+            text-decoration: none;
+            border-radius: 5px;
+            font-weight: bold;
+            transition: 0.3s;
+            text-align: center;
+        }
+
+        .btn-nav:hover {
+            background-color: #1a6b1a;
+        }
+
+
+        .hero {
+            text-align: center;
+            padding: 80px 10%;
+            background: linear-gradient(to bottom, #e8f5e9, #f9fbf9);
+        }
+
+        .hero h1 {
+            font-size: 48px;
+            color: #111;
+            margin-bottom: 20px;
+        }
+
+        .hero h1 span {
+            color: #228B22;
+        }
+
+        .hero p {
+            font-size: 18px;
+            color: #555;
+            max-width: 600px;
+            margin: 0 auto 30px auto;
+            line-height: 1.6;
+        }
+
+        .hero .btn-cta {
+            font-size: 18px;
+            padding: 15px 40px;
+            display: inline-block;
+        }
+
+
+        .features {
+            display: flex;
+            justify-content: space-around;
+            padding: 60px 10%;
+            gap: 30px;
+            text-align: center;
+        }
+
+        .feature-card {
+            background: #fff;
+            padding: 40px 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+            flex: 1;
+            transition: transform 0.3s;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-10px);
+        }
+
+        .feature-card h3 {
+            color: #228B22;
+            margin-bottom: 15px;
+            font-size: 22px;
+        }
+
+        .feature-card p {
+            color: #666;
+            font-size: 15px;
+            line-height: 1.5;
+        }
+
+
+        .gallery-section {
+            padding: 40px 10%;
+            text-align: center;
+            background-color: #fff;
+            position: relative;
+        }
+
+        .gallery-section h2 {
+            font-size: 32px;
+            color: #111;
+            margin-bottom: 30px;
+        }
+
+        .carousel-wrapper {
+            display: flex;
+            align-items: center;
+            position: relative;
+            gap: 15px;
+        }
+
+        .carousel-btn {
+            background-color: #228B22;
+            color: white;
+            border: none;
+            border-radius: 50%;
+            min-width: 45px;
+            height: 45px;
+            font-size: 22px;
+            cursor: pointer;
+            z-index: 10;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+            transition: background 0.3s;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .carousel-btn:hover {
+            background-color: #1a6b1a;
+        }
+
+        .carousel-container {
+            display: flex;
+            overflow-x: auto;
+            scroll-behavior: smooth;
+            scroll-snap-type: x mandatory;
+            gap: 20px;
+            padding: 10px 0;
+            width: 100%;
+            scrollbar-width: none;
+            -ms-overflow-style: none;
+        }
+
+        .carousel-container::-webkit-scrollbar {
+            display: none;
+        }
+
+        .carousel-card {
+            flex: 0 0 calc(33.333% - 14px);
+            scroll-snap-align: start;
+            background: #f9fbf9;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
+            text-align: left;
+        }
+
+        .carousel-img {
+            width: 100%;
+            height: 180px;
+            object-fit: cover;
+        }
+
+        .carousel-info {
+            padding: 15px;
+        }
+
+        .carousel-info h4 {
+            color: #228B22;
+            margin-bottom: 5px;
+        }
+
+        .carousel-info p {
+            color: #555;
+            font-size: 14px;
+            font-weight: bold;
+        }
+
+        .carousel-info span {
+            color: #888;
+            font-size: 12px;
+        }
+
+
+        .cause-section {
+            padding: 80px 10%;
+            background-color: #f9fbf9;
+            display: flex;
+            justify-content: center;
+            text-align: center;
+        }
+
+        .cause-content {
+            max-width: 800px;
+        }
+
+        .cause-content h2 {
+            color: #111;
+            margin-bottom: 25px;
+            font-size: 36px;
+
+        }
+
+        .cause-content p {
+            color: #555;
+            font-size: 18px;
+
+            line-height: 1.8;
+            margin-bottom: 20px;
+        }
+
+        .cause-content p:last-child {
+            margin-bottom: 0;
+        }
+
+        .cause-content strong {
+            color: #228B22;
+        }
+
+
+        footer {
+            background-color: #111;
+            color: #fff;
+            text-align: center;
+            padding: 30px 10%;
+            font-size: 14px;
+            margin-top: auto;
+        }
+
+
+        @media (max-width: 900px) {
+            .carousel-card {
+                flex: 0 0 calc(50% - 10px);
+            }
+        }
+
+        @media (max-width: 768px) {
+            header {
+                flex-direction: column;
+                gap: 15px;
+            }
+
+            .hero {
+                padding: 50px 5%;
+            }
+
+            .hero h1 {
+                font-size: 32px;
+            }
+
+            .features {
+                flex-direction: column;
+                padding: 40px 5%;
+            }
+
+            .carousel-card {
+                flex: 0 0 100%;
+            }
+
+            .carousel-btn {
+                display: none;
+            }
+
+            .cause-section {
+                padding: 50px 5%;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <header>
+        <div class="logo">CicloVerde</div>
+        <a href="#" class="btn-nav">Acesse o Sistema</a>
+    </header>
+
+    <section class="hero">
+        <h1>Transforme seu Desperdício em <span>Impacto Social</span></h1>
+        <p>O sistema mais rápido e fácil para padarias e pequenos comércios repassarem seus alimentos excedentes para
+            ONGs locais, sem gastar com logística.</p>
+        <a href="#" class="btn-nav btn-cta">Quero ser um Parceiro Sustentável</a>
+    </section>
+
+    <section class="features">
+        <div class="feature-card">
+            <h3>Muito Rápido</h3>
+            <p>Na correria do balcão, você não tem tempo a perder. Cadastre os pães ou frios que sobraram com apenas 3
+                cliques no nosso software Desktop.</p>
+        </div>
+        <div class="feature-card">
+            <h3>Zero Logística</h3>
+            <p>Não tem entregador? Sem problemas. O sistema avisa as instituições parceiras mais próximas e elas mesmas
+                vão até o seu comércio retirar a doação.</p>
+        </div>
+        <div class="feature-card">
+            <h3>Marketing Verde</h3>
+            <p>Receba relatórios detalhados no fim do mês mostrando quantos quilos de comida você salvou do lixo e use
+                esse certificado para atrair novos clientes.</p>
+        </div>
+    </section>
+
+    <section class="gallery-section">
+        <h2>Impacto Real na Comunidade</h2>
+
+        <div class="carousel-wrapper">
+            <button class="carousel-btn" onclick="moverCarrossel(-1)">&#10094;</button>
+
+            <div class="carousel-container" id="carrossel">
+                <div class="carousel-card">
+                    <img src="https://images.unsplash.com/photo-1509440159596-0249088772ff?auto=format&fit=crop&w=400&q=80"
+                        class="carousel-img" alt="Pães">
+                    <div class="carousel-info">
+                        <h4>Padaria do Roberto</h4>
+                        <p>Doou: 15Kg de Pães Franceses</p>
+                        <span>Retirado pela ONG Alimento Vivo</span>
+                    </div>
+                </div>
+
+                <div class="carousel-card">
+                    <img src="https://images.unsplash.com/photo-1518843875459-f738682238a6?auto=format&fit=crop&w=400&q=80"
+                        class="carousel-img" alt="Vegetais">
+                    <div class="carousel-info">
+                        <h4>Hortifrúti da Vila</h4>
+                        <p>Doou: 22Kg de Verduras e Legumes</p>
+                        <span>Retirado por Creche Esperança</span>
+                    </div>
+                </div>
+
+                <div class="carousel-card">
+                    <img src="https://images.unsplash.com/photo-1610832958506-aa56368176cf?auto=format&fit=crop&w=400&q=80"
+                        class="carousel-img" alt="Frutas">
+                    <div class="carousel-info">
+                        <h4>Mercadinho Central</h4>
+                        <p>Doou: 8Kg de Frutas da Estação</p>
+                        <span>Retirado pelo Asilo São João</span>
+                    </div>
+                </div>
+
+                <div class="carousel-card">
+                    <img src="https://images.unsplash.com/photo-1542838132-92c53300491e?auto=format&fit=crop&w=400&q=80"
+                        class="carousel-img" alt="Mercado">
+                    <div class="carousel-info">
+                        <h4>Supermercado Oliveira</h4>
+                        <p>Doou: 30Kg de Alimentos Diversos</p>
+                        <span>Retirado por Mesa Brasil</span>
+                    </div>
+                </div>
+
+                <div class="carousel-card">
+                    <img src="https://images.unsplash.com/photo-1593113598332-cd288d649433?auto=format&fit=crop&w=400&q=80"
+                        class="carousel-img" alt="Cestas">
+                    <div class="carousel-info">
+                        <h4>Armazém do João</h4>
+                        <p>Doou: 12Kg de Frios e Laticínios</p>
+                        <span>Retirado por Sopão Solidário</span>
+                    </div>
+                </div>
+            </div>
+
+            <button class="carousel-btn" onclick="moverCarrossel(1)">&#10095;</button>
+        </div>
+    </section>
+
+
+    <section class="cause-section">
+        <div class="cause-content">
+            <h2>O Nosso Propósito</h2>
+            <p>No Brasil, milhares de toneladas de alimentos em perfeitas condições vão para o lixo todos os dias no
+                comércio de bairro, enquanto diversas famílias passam fome. O <strong>CicloVerde</strong> nasceu para
+                corrigir essa falha de comunicação logística.</p>
+            <p>O projeto está diretamente alinhado com a <strong>Agenda 2030 da ONU</strong>, combatendo ativamente o
+                desperdício (ODS 12 - Consumo e Produção Responsáveis) e promovendo o acesso à alimentação (ODS 2 - Fome
+                Zero). Acreditamos que a tecnologia é a melhor ferramenta para construir uma economia circular
+                solidária.</p>
+        </div>
+    </section>
+
+    <footer>
+        <p>Projeto Desenvolvido em Java/MySQL para a disciplina UPX2 - Centro Universitário Facens (Sorocaba/SP).</p>
+    </footer>
+
+
+    <script>
+        function moverCarrossel(direcao) {
+            const carrossel = document.getElementById('carrossel');
+            const card = carrossel.querySelector('.carousel-card');
+            const scrollAmount = card.offsetWidth + 20;
+
+            const maxScroll = carrossel.scrollWidth - carrossel.clientWidth;
+
+            if (direcao === 1 && carrossel.scrollLeft >= maxScroll - 10) {
+                carrossel.scrollTo({ left: 0, behavior: 'smooth' });
+            }
+            else if (direcao === -1 && carrossel.scrollLeft <= 10) {
+                carrossel.scrollTo({ left: maxScroll, behavior: 'smooth' });
+            }
+            else {
+                carrossel.scrollBy({ left: direcao * scrollAmount, behavior: 'smooth' });
+            }
+        }
+    </script>
+</body>
+
+</html>
